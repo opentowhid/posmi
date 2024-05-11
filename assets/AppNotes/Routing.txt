@@ -1,0 +1,12 @@
+# Create New Projecct With separate routing module by CLI.
+    ng new ProjecctName --routing
+
+# Altenatively we can do the same by the following...
+    * app-routing.module.ts -Customization.
+        *import { RouterModule, Routes } from '@angular/router';
+        * Declare all path inside-  const appRoutes: Routes = [ ]; array.
+        * import & export  appRoutes from @NgModule({})
+        * Export the class AppRoutingModule.
+    * app.module.ts -Customization.
+        * import {AppRoutingModule} from './app-routing.module';
+        * Add AppRoutingModule into import array- " imports: [ BrowserModule, AppRoutingModule ], "

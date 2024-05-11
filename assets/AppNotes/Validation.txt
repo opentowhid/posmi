@@ -1,0 +1,47 @@
+
+# Email Validation:
+    <input matInput placeholder="Type Usename or email here" [(ngModel)]="user.username" #username="ngModel"
+           name="username" email required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+        
+        <mat-error *ngIf="username.errors?.email && !username.errors?.required">
+          Default email validation
+        </mat-error>
+
+        <mat-error *ngIf="username.errors?.pattern && !username.errors?.required">
+          Validation for implementing pattern.
+        </mat-error>
+        
+        <mat-error *ngIf="username.errors?.required">
+          Validation for required.
+        </mat-error>
+
+        **Note: use email or pattern. pattern is preffered by 441.
+
+# Required validator:
+    <input matInput placeholder="Type Usename or email here" [(ngModel)]="user.username" #username="ngModel"
+           name="username" required >
+
+# Password Validator: (use pattern)
+    <mat-form-field >
+        <input matInput placeholder="Password" [(ngModel)]="user.password" #password="ngModel" type="password" name="password"
+          required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
+      
+          <mat-error *ngIf="password.errors?.required && password.touched">
+            Pass Required
+          </mat-error>
+          <mat-error *ngIf="password.errors?.pattern && !password.errors?.required">
+            Pass should be upper ,lower & number
+          </mat-error>
+      </mat-form-field>
+    
+    
+    
+# Pattern Collection:    
+    1.  Password pattern (UpperCase, LowerCase, Number/SpecialChar and min 8 Chars) -preffered
+            pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+    2.  Password pattern (UpperCase, LowerCase and Number)
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+
+# Password & Confirm Password check validator.
+    * Make a directive in the shared folder.
+    * Tie the directive into Password group.

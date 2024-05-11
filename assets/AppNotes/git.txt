@@ -1,0 +1,51 @@
+
+How to publish build project into github.io ? (https://dzone.com/articles/how-to-deploy-an-angular-application-to-github)
+    
+    # install git into your PC for terminal in windows. than active it from pc properties > path ...
+    # make an account into github.com (ex: accname) > create a repository (repo1)
+    
+    # run terminal as an admin and navigate into your project.
+    
+    # add git into project. 
+        git init
+
+    # add local project with the repository. (will guide from github repository)
+        git remote add origin https://github.com/USERNAME/PROJECT_NAME.git
+        Ex: git remote add origin https://github.com/accname/repo1.git
+        git remote add origin https://github.com/towhid-dev/test1.git
+        git remote add origin https://github.com/posmisweaters/erp.git
+        git remote add origin https://github.com/posmisweaters/0.git
+
+    
+    #verify the project. (will guide from github repository)
+        git remote -v 
+
+    # in those process runtime a github login window will shown and need to authenticate it.
+
+    # install anguar-github-pages cli.
+        npm install -g angular-cli-ghpages
+
+    # Build the app. (with setting base href as the server name.)
+        ng build --prod --base-href "https://accname.github.io/repo1/"
+        ng build --prod --base-href "http://localhost:1/"
+        ng build --prod --base-href "https://towhid-dev.github.io/test1/"
+        ng build --prod --base-href "https://posmisweaters.github.io/erp/"
+        
+        ng build --prod --base-href "http://localhost/ng/"
+        ng build --prod --base-href "http://180.92.238.139:8080/erp/"
+        ng build --prod --base-href "https://posmi.ddns.net/"
+        ng build --prod --base-href "https://posmisweaters.ddns.net/"
+
+        # angular 14 build style : 
+        ng build --configuration production --base-href "https://posmisweaters.ddns.net/"
+
+
+    # cut all build files into root dist folder from project name folder.
+    
+    # publish app with bellow command. it will remove all previous files into git repository and put new build files.
+        ngh --no-silent
+    
+    # all done. now check url: "https://accname.github.io/repo1/" . your project will be live.
+
+Installation of git:
+    Search in google and install git for ur os.

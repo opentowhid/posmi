@@ -1,0 +1,6 @@
+
+#Form:
+    <form #loginForm="ngForm"> (Form Content) </form>
+            * to work with form we need to import FormsModule, ReactiveFormsModule etc in 
+# *ngIf="showLeftDrawerMenu == 'Product'"
+    //if condition in template.

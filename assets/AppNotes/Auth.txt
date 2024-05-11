@@ -1,0 +1,11 @@
+Issue
+    1. role (handle when user has multiple role)
+    2. handle when user decode token expiration and role.
+    3. receive user data with token (photo, id, name, etc.)
+
+Web api + angular 2+ authentication
+    http://jasonwatmore.com/post/2018/05/16/angular-6-user-registration-and-login-example-tutorial
+    
+# Good Example:
+    http://www.dotnetmob.com/angular-5-tutorial/angular-5-user-registration-web-api/
+    https://github.com/CodAffection/Angular-5---Role-Based-Authorization-with-Web-API

@@ -1,0 +1,155 @@
+Finding problem: npm audit
+Fix Problems:    npm audit fix
+
+# Application Limitations:
+    1. Browser resize problem.
+        * If left drawer is open & > browser resized to small > and change drawer backdrop = true > if closed drawer with baackdrop > !error occured in view- if the browser resiged to bigger screen.
+            (this can be solved if we always use backdrop = false. or if we always use toogle button to open & close the drawer. )
+# Two step back to go parent level folder location.
+    import { AuthenticationService } from '../../services/authentication.service';
+
+# ng new TaqwaCoding --routing  // Creating Project
+# Writing Notes inside assets/AppNotes
+# Setting up Bootstrap4 , Jquery & popper.js with > 
+    1. npm install bootstrap jquery popper.js --save
+    2. Make Changes in Angular.json
+        "styles": [
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+        "scripts": [
+            "./node_modules/jquery/dist/jquery.min.js",
+            "./node_modules/popper.js/dist/umd/popper.min.js",
+            "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+        ]
+    3. Bootstrap Intellisense Activation.
+        * press > cnt + shift + p -on vs code
+        * type & enter > ext install HTML CSS Class Completion
+        * install > Intellisense for css class.
+# Creating Component:
+    1. ng g c Product/all-product
+    2. ng g c home
+    3. ng g c page-not-found
+
+# app-routing-module
+    * Import components
+    * Declare path into > const appRoutes: Routes = []
+
+# ng g d shared/ConfirmEqualValidator -m=app.module --spec=false -d
+# ng g g auth/Auth -m=app.module --spec=false -d  // (module not adding. set manualy)
+# ng g service auth/Authentication -m=app.module --spec=false -d
+
+# import "HttpClientModule" in app.module and imports: [ ] array. to fix http error.
+
+# install ngx-toastr to show error message. (https://www.npmjs.com/package/ngx-toastr)
+
+    1. npm install ngx-toastr --save
+    2.npm install @angular/animations --save   (this is dependancy for toastr)
+    3.add into angular.json style array.
+            "styles": [
+                "styles.scss",
+                "node_modules/ngx-toastr/toastr.css" // try adding '../' if you're using angular cli before 6
+                ]
+    4. import into root module / usable module.
+            * add import statement
+                    import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+                    import { ToastrModule } from 'ngx-toastr';
+            *add into imports array
+                    imports: [
+                        BrowserAnimationsModule, // required animations module
+                        ToastrModule.forRoot() // ToastrModule added
+                    ],
+    5. Use in component:
+        * import statement:
+            import { ToastrService } from 'ngx-toastr';
+        * add constructor
+            constructor(
+                private toastr: ToastrService,
+                ) { }
+        * apply on event / method calling
+            this.toastr.error(err.error);
+
+# ng g c auth/forbidden -m=app.module  // to show pages for unauthorised roles users.
+
+# creating global variable.
+    make a  common / global service.
+        Note: observable is required to asyn data.
+            constructor is fast loding
+            ngoninit is right place o call service but lazy. after constructor its call.
+    # For Boolean type variable:
+        * At service.ts:
+            private drawerstatus = new BehaviorSubject<boolean>(false);
+            getDrawerStatus$ = this.drawerstatus.asObservable();
+            setDrawerStatus() {
+                // error for !this.leftdrawer -set value of this.
+                this.drawerstatus.next(!this.drawerstatus.value);
+            }
+        * at component.ts that need this value as observabe.(asyn / auto update.)
+            1. constructor(private _router: Router, private _commservice: CommonService ) {}
+            2. leftdrawerstatus : boolean
+            3. ngOnInit() { 
+                this._commservice.getDrawerStatus$.subscribe(val => this.leftdrawerstatus = val)
+               }
+# Login & Logout icon in navbar.
+    1. Set login status in common service.
+    2. Call it from Login() & SignOut()
+    3. also call from constructor so it checked logged-in status if user has token from previous session. 
+    
+# npm install --save font-awesome angular-font-awesome
+    Next add into style array in anguar.json: "./node_modules/font-awesome/css/font-awesome.css"
+
+# Implementing interceptor for http call. (to add bearer token & Handle all error.)
+    * this add token before any http request and handle http error globaly.
+        https://medium.com/@er.surajnegi/what-are-angular-http-interceptors-and-how-to-create-them-82d1d6159c4e
+        https://medium.com/@aleixsuau/error-handling-angular-859d529fa53a
+        http://www.advancesharp.com/blog/1234/global-error-handling-in-angular-6-with-httpclient-interceptor
+# Implement a global Http spinner.
+    * Interceptor will detect when to show loading indicator. set data into common service.
+    *Pick common service into nav component.
+        private _commonService : CommonService,
+    * Bind directly into nav component html page to show all routing pages.
+        <div *ngIf="_commonService.httpLoadingIndicator" class="spinner"></div>
+    * Bind into modal component html page separatetly bcz its popup.
+
+# Installing jsPdf
+    npm install jspdf --save
+    npm install jspdf-autotable --save
+
+# Installing Excell js
+    npm install --save exceljs   (Declare like--- import * as ExcelJS from "exceljs/dist/exceljs.min.js";)
+    npm install --save file-saver (to save files at client side. https://www.ngdevelop.tech/export-to-excel-in-angular-6/)
+
+    Facing some problem and solved it doing bellow
+    {
+        1. tsconfig.json - delete path
+        effect: one instance of babel-polyfill is allowed
+        2. angular.json - remove "./node_modules/exceljs/dist/exceljs.min.js" from "scripts"
+            effect: only one instance of babel-polyfill is allowed
+        3. tsconfig.app.json - remove "paths": {
+            "exceljs": [
+                "./node_modules/exceljs/dist/exceljs.min.js"
+            ]
+            }, - from "compilerOptions"
+            effect: only one instance of babel-polyfill is allowed
+        4. tsconfig.app.json - remove     // "types": [], from 
+        4. tsconfig.app.json - remove	// "types": ["node"], to "types": [],
+
+
+        "@babel/polyfill": "^7.7.0",
+
+        6. removing "./node_modules/babel-polyfill/dist/polyfill.min.js" from angular.json / Scripts
+            !!!! Works. Problem SOlved
+        7. Declare - import * as ExcelJS from "exceljs/dist/exceljs.min.js";
+    }
+
+# Installing LINQ / linq.ts
+    npm install --save linqts
+    Example: https://stackblitz.com/edit/angular-typescript-linq?file=app%2Fapp.component.ts
+    import { List } from 'linqts';
+    // Linq Query Example
+    arr2 = new List<number>([1, 2, 3, 4, 5,6,7,8,9]);
+    SingleNumber : number = this.arr2.Where(a=>a ==5).SingleOrDefault();
+    ArticleList = new List<Article>();
+    Count = this.ArticleList.Count();
+    SingleArticle = this.ArticleList.Where(x => x.colors.colorName == "");
+    

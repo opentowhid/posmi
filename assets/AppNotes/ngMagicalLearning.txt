@@ -1,0 +1,3 @@
+
+# Instantly Convert any input to uppercase
+    oninput="this.value = this.value.toUpperCase()"

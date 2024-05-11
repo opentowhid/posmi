@@ -1,0 +1,6 @@
+https://edupala.com/how-to-use-lodash-in-angular/
+
+Date: 13.09.2022
+
+npm install lodash --save
+npm install @types/lodash --save-dev

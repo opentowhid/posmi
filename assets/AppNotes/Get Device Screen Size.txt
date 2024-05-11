@@ -1,0 +1,19 @@
+Step 01:
+In that Component do: import { HostListener } from "@angular/core";
+
+Step 2:
+In the component's class body write:
+
+screenHeight = "Unable To Detect"
+screenWidth = "Unable To Detect"
+@HostListener('window:resize', ['$event'])
+    onResize(event?) {
+      this.screenHeight = window.innerHeight;
+      this.screenWidth = window.innerWidth;
+}
+Step 3:
+In the component's constructor call the onResize method to initialize the variables. Also, don't forget to declare them first.
+
+constructor() {
+  this.onResize();
+}

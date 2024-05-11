@@ -1,0 +1,32 @@
+Follow this Guide: https://loiane.com/2017/08/how-to-add-bootstrap-to-an-angular-cli-project/
+
+#Run this command from project terminal. this will install latest v of bootstrap & jquery.
+    The required Bootstrap and jQuery files are copied into the node_modules folder within the project directory.
+    Also, notice package.json file is also automatically updated with both the dependencies (Bootstrap and jQuery) 
+        
+        # npm install bootstrap jquery --save 
+
+# Refference with project:
+
+    #Method 1: Import BS Directly > Finally in index.html file add the following script and link elements to reference the required CSS and JS files. As you can see, these files are being served from the node_modules folder. 
+        <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    Or
+    #Method 2: Configure angular.json:
+        "styles": [
+                    "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                    "styles.scss"
+                    ]
+
+        "scripts": [
+                    "./node_modules/jquery/dist/jquery.min.js",
+                    "./node_modules/popper.js/dist/umd/popper.min.js",
+                    "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+  
+
+
+Alternet Try:                  ]
+## In the style.css we can add referrence directly from local folder with bootstrap.css file. (just bs. Where is jquery & popper?)
+    @import './style-src/bootstrap.min.css';

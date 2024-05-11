@@ -1,0 +1,53 @@
+*** Using Mat Dialog. ***
+
+# employee-Folder
+    crudEmployee-Folder
+        crud-employee.component.ts
+            * export class CreditEmployeeComponent
+            * export class ViewEmployeeComponent
+            * export class DeleteEmployeeComponent
+    employee.component.ts
+        import { CreditEmployeeComponent, ViewEmployeeComponent, DeleteEmployeeComponent} from '../employee/crud-employee/crud-employee.component';
+        * export class EmployeeComponent
+            () openCreditDialog(Id : number): void {
+                    const dialogRef = this.dialog.open(CreditEmployeeComponent, {
+                    panelClass: 'paddingTop', // set at style.css using .paddingTop .mat-dialog-container { }
+                    width: '90%',
+                    height: '100%',
+                    //hasBackdrop: false,
+                    //backdropClass: '',
+                    data: {editId: Id}
+                    });
+
+                    dialogRef.afterClosed().subscribe(result => {
+                    console.log('The dialog was closed');
+                    this.getEmployees();
+                    });
+                }
+            () openViewDialog(Id : number) // .....same as openCreditDialog() just change class name.
+            () openDeleteDialog(Id : number)
+    
+    employee.component.html
+        <button (click)="openViewDialog(emp.id)"> View </button> |  
+        <button (click)="openCreditDialog(emp.id)"> Edit </button> | 
+        <button (click)="openDeleteDialog(emp.id)"> Delete </button> 
+
+# fam/app/root/module.ts
+    import { EmployeeComponent } from './HrAdmin/employee/employee.component';
+    import { CreditEmployeeComponent, ViewEmployeeComponent, DeleteEmployeeComponent } from './HrAdmin/employee/crud-employee/crud-employee.component';
+
+    @NgModule({
+        // add components which opens as Modal / Dialog.
+        entryComponents: [
+            CreditEmployeeComponent , ViewEmployeeComponent, DeleteEmployeeComponent
+        ],
+    })
+
+# app.routing.module.ts * * * * * *
+    import { EmployeeComponent } from './FamPackaging/HrAdmin/employee/employee.component';
+    
+    const routes: Routes = [
+        // Fam Packaging
+        { path: 'fam/employee', component: EmployeeComponent },
+    ]
+

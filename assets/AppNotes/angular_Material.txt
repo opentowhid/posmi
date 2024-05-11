@@ -1,0 +1,41 @@
+Intalling angular material:
+    # npm i --save @angular/cdk @angular/material @angular/animations hammerjs
+    # npm install --save material-design-icons
+        > Than Import it into style array of angular json:
+             "./node_modules/material-design-icons/iconfont/material-icons.css"
+        (For Icon Customization: http://google.github.io/material-design-icons/ 
+        Icon library: https://material.io/tools/icons/?style=baseline)
+    Note:
+        @angular/cdk = component development kit. library that allows to built awesome component for the web.
+        @angular/material = Actual material package.
+        @angular/animations = To use nice animations.
+        hammerjs = is a powerful library for guesture. Touch tap control on screen.
+        material-design-icons = collection of google material design icons.
+Navigation:
+    Navigation generation by cli:
+        # ng generate @angular/material:material-nav --name=main-nav -d
+        (automatic generate component of navigation)
+        
+
+
+Creating a separate module for angular material:
+        ng generate module ngMaterial -m=app.module --spec=false --flat=true -d
+
+    import nacessary library:
+        import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+        import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+        import {MatButtonModule} from '@angular/material'
+        import {MatCheckboxModule} from '@angular/material/checkbox';
+        ...................
+    Import nacessary component into import array 
+        imports: [CommonModule, BrowserAnimationsModule, MatButtonModule, MatCheckboxModule,.... ],
+
+    Add Export array inside this module. otherwise it will not work
+        exports: [MatButtonModule,MatCheckboxModule, ...]
+    Import this material module into app.module.ts (or, where you need it)
+        Step 01: import { NgMaterialModule } from './/ng-material.module';
+        Step 02: imports: [ ....., NgMaterialModule, ],
+    
+import a theme inside global style sheet (styles.css)
+        # @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+

@@ -1,0 +1,73 @@
+## In angular.json style array order will be affecter. styles will not fire if invoked first. place style.css in the last position.
+
+# Image / Photo customization // https://www.w3schools.com/css/css3_images.asp
+        (Rounded Images, Thumbnail Images, Responsive Images, Center an Image, Polaroid Images / Cards
+         , Transparent Image, Image Text, Image Filters(add visual effects), Image Hover Overlay (on Hover some effect),
+         Flip an Image, Responsive Image Gallery,Image Modal (Advanced),  )
+# Images / object fit property - important441 // https://www.w3schools.com/css/css3_object-fit.asp
+        ( )
+# HTML Tags:
+    &nbsp;      //used to make a space between two element.
+    
+Centering in css:
+    https://www.w3.org/Style/Examples/007/center.en.html
+
+photo Centering:
+    style="display: block; margin-left: auto; margin-right: auto"
+Text centering:
+    style="margin-left: auto; margin-right: auto;  width: 16em"
+
+position: absolute; ???
+
+# style="
+    width: 300px;
+    min-height: 450px;      //max-height, height etc. same for width.
+    margin-top: 45px;   //margin at top
+    margin: 10px 12px 15px 18px;    //margin at- top right down left in px
+    padding: 0 0 0 0;   //same as margin
+    background: rgb(0, 128, 160) ; //color of background
+    color:rgb(31, 29, 29);      //color can be red, white,blue etc / #code / rgb()
+    cursor: pointer;    //on hover this is clicable
+    font-size: 40px;
+    font-size:05vw    // see documentation vw? it fixed size on any screen.
+    opacity: .6;    // transparancy 60%   
+    position: fixed;    //object will be fixed on screen
+    left:0 ; // use with fixed object to fixed at left side
+    left:0%; right:auto;    //object start at left 0% and right as it needed. Reverse-(left:auto; right:0%;)
+    border-radius : 20px;   //border will be rounded.
+    border: 1px solid;      // set border / stock
+    filter: brightness(80%);  // set brightness of a photo with this.
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  // make shadow
+    * position: absolute; top:50%; left:50%;transform: translate(-50%, -50%)
+            // above styles: placed previous photo declared and position middle. 
+    
+    
+    overflow: auto;   // has other property. Scroll related.
+    overflow-y: scroll;     //use for scrolling.
+
+    display: 
+        none;
+        inline;
+        block;  // used to certer img adding "margin: auto;". (Displays an element as a block element (like <p>). It starts on a new line, and takes up the whole width)
+        inline-block;
+        flex;   (Displays an element as a block-level flex container)
+
+
+
+    "
+# class="
+    row no-gutters"      //remove all padding and margin from row.
+    col-md-10 col-sm-12     // this column 10/12 for >=medium & 12 unit for <=small screen. BS4 grid system.
+    col-md-8 offset-md-2    //BS4 change offset class. 2/12-unit for left + right margin will add for medium device.
+    material-icons      // angular material icon. class manually defined at style.css -- https://material.io/tools/icons/?style=baseline
+    scrollbar       //class defined for scrollbar. Manual class
+    .clickButton{} .clickButton:focused{color:rgb(175, 13, 13);}.clickButton:active {color:rgb(53, 245, 14);}
+
+
+inherit ?
+
+# Scrollbar
+
+# Cannot bind disabe property with multiple condition.
+    [disabled]="!loginForm.valid && !termsConditions.checked"       // error occured
+    [disabled]="!loginForm.valid"       // works fine

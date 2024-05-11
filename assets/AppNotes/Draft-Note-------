@@ -1,0 +1,10 @@
+--- Check This using linq
+    Strings : List<string>; // Example for check using linq
+    if( this.deletors.some(v => this.myRoles.indexOf(v) !== -1 )) {this.deleteAccess = true };
+    if( this.Strings.Any(a=>a == this.myRoles)) {this.deleteAccess = true };
+
+--- Modal / Routing for create/edit
+
+--- Double click to view
+
+--- form array control https://netbasal.com/angular-reactive-forms-the-ultimate-guide-to-formarray-3adbe6b0b61a

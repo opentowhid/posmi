@@ -1,0 +1,74 @@
+*** Angular CLI Create new project ***
+    # ng new MyFirstApp      //(Create a fresh new Project with node packages.)
+    # ng new RoutingDemo --routing      //(Create new Project with separate routing module. its Important.)
+    # cd MyFirstApp       //( will change directiory into project.)
+    # code .     //(will open current directory with VS Code editor.)    
+    # ng serve --open   or ng s -o      ///(will serve the application with watch mode. To stop the server, press CTRL + C ,and next- Y)
+
+*** Angular CLI ng new options ***
+    # --dry-run  or -d       //(add this with any cli command to see what will happen.)
+    # --skip-install      //(Skip installing packages)
+    # --skip-tests      //(Skip creating tests) 
+    # --inline-style      //(Use inline styles when generating the new application)
+    # --inline-template      //(Use inline templates when generating the new project)
+
+*** Angular cli generate component ***
+    # ng generate component CompName or ng g c CompName      //(Create new component with CompName.spec.ts file and outline .css + .html file )
+    # ng g c abc/xyz      //(component created inside abc folder)
+    # ng g c pqr --flat      //(flat option true means component will place without a folder)
+    # ng g c ghi --dry-run or ng g c ghi -d 
+    # ng g c ghi -it -is      //(component with inline template and inline style)
+    # ng g c student -d --spec=false       //( it will not create spec file.) 
+    
+    ng g c samana/uploadmanager -d --module=app.module
+    ng g c samana/uploadmanager/upload -d --module=app.module
+
+*** Angular cli generate service***
+    # ng generate service employee ,or# ng g s employee 
+    # ng g s employee -m=app.module      //(Servise will be registered into mentioned module automatically)
+    # ng g s student -d --spec=false      //(Skip creating spec file)
+    # ng g s student -d --spec=false --flat=false      //(Create service with folder of it's own. default value is true )
+
+*** Angular cli generate module ***
+    # ng generate module moduleName ,or# ng g m moduleName
+    # ng g m students -module=app.module or ng g m students -d -m=app.module
+            (create and auto imports it into the root module      //(AppModule))
+    # ng g m students -d -m=app.module --spec=true      //( if we want a spec file)
+    # ng g m students -d -m=app.module --spec=true --flat=true      //( by default CLI creates a folder for the module. it stops folder creation)
+
+    ng g module sweater-erp -d --flat=true
+
+*** generate directives, pipes and routing guards ***
+    # Directive: ng generate directive directiveName ,or- ng g d directiveName
+    # Pipe : ng generate pipe pipeName ,or- ng g p pipeName
+    # Routing Guard: ng generate guard guardName ,or- ng g g guardName
+    Example: ng g (d/p/g) Name_d/p/g (--skip-import / -module=app.module) --flat=true) --spec=false -d
+
+*** Angular cli generate class, interface and enum ***
+    # ng generate class className or ng g cl className 
+    # ng g cl employee/employee 
+    # ng g cl employee/employee --spec=true      //(By default, a spec file is not created for the class. )
+    # ng generate interface interfaceName or ng g i interfaceName 
+    # ng generate enum enumName or ng g e enumName 
+
+*** Linting TypeScript ***
+    # ng lint 
+    # ng lint --type-check      //('no-use-before-declare' rule is disabled now )
+
+*** Angular CLI generate routing module ***
+    # ng new ProjectName --routing
+
+*** Running angular app locally ***
+    # ng serve --open
+    # ng serve --help 
+    # ng serve --watch/--live-reload/--port/--extract-css
+
+*** Compile angular app ***
+    # ng serve      // (Compile & serve application from ram-memory only.)
+    # ng build      //(compiles app to "dist" folder. usable into production & development build. deployable into another server.)
+    # ng build --dev      //(Development build)
+    # ng build --dev -sm false      //(Default dev build produce source map)
+    # ng build --dev -ec true      //(generate a dev build with global style extracted to .css file instead of .js file)
+    # ng build --prod      //(Production build)
+    # ng build --prod -sm true      //(to generate prod. build with source map)
+
